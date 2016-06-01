@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TopDownAdventureEngine" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/FirstSDL_Project" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="include/GameEntity" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/FirstSDL_Project" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
+					<Add directory="include" />
+					<Add directory="GameLayer" />
+					<Add directory="include/GameEntity" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="SDL2" />
+					<Add library="SDL2_image" />
+					<Add library="SDL2_gfx" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="`sdl-config --cflags`" />
+		</Compiler>
+		<Linker>
+			<Add option="`sdl-config --libs`" />
+		</Linker>
+		<Unit filename="cb.bmp" />
+		<Unit filename="include/GameConstants.h" />
+		<Unit filename="include/GameEntity/GameEntity.h" />
+		<Unit filename="include/GameEntity/Player.h" />
+		<Unit filename="include/GameLayer/Background.h" />
+		<Unit filename="include/GameLayer/GameLayer.h" />
+		<Unit filename="include/GameLayer/HUD.h" />
+		<Unit filename="include/GameLayer/ObjectLayer.h" />
+		<Unit filename="include/InputHandler.h" />
+		<Unit filename="include/MainWindow.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/GameEntity/GameEntity.cpp" />
+		<Unit filename="src/GameEntity/Player.cpp" />
+		<Unit filename="src/GameLayer/Background.cpp" />
+		<Unit filename="src/GameLayer/HUD.cpp" />
+		<Unit filename="src/GameLayer/ObjectLayer.cpp" />
+		<Unit filename="src/InputHandler.cpp" />
+		<Unit filename="src/MainWindow.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
