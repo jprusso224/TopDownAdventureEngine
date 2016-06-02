@@ -15,4 +15,5 @@ enum class WindowDirection
     LEFT
 };
 
+
 #endif

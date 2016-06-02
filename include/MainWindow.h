@@ -7,6 +7,7 @@
 #include "GameLayer/HUD.h"
 #include "GameLayer/Background.h"
 #include "GameLayer/ObjectLayer.h"
+#include "GameLayer/TileLayer.h"
 #include "GameConstants.h"
 
 class MainWindow
@@ -33,6 +34,7 @@ class MainWindow
 
         HUD* m_HUD;
         Background* m_background;
+        TileLayer* m_tileLayer;
         ObjectLayer* m_objectLayer;
 };
 

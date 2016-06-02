@@ -45,10 +45,10 @@ bool MainWindow::init()
                 success = false;
             }
 
-            m_HUD = new HUD(m_Renderer);
-            if(m_HUD->init() == false)
+            m_tileLayer = new TileLayer(m_Renderer);
+            if(m_tileLayer->init() == false)
             {
-                printf("HUD failed to init.\n");
+                printf("Tile layer failed to init.\n");
                 success = false;
             }
 
@@ -58,6 +58,15 @@ bool MainWindow::init()
                 printf("Object layer failed to init.\n");
                 success = false;
             }
+
+            m_HUD = new HUD(m_Renderer);
+            if(m_HUD->init() == false)
+            {
+                printf("HUD failed to init.\n");
+                success = false;
+            }
+
+
 
         }
 
@@ -69,14 +78,15 @@ bool MainWindow::init()
 void MainWindow::update()
 {
     m_background->update();
+    m_tileLayer->update();
     m_objectLayer->update();
     m_HUD->update();
-
 }
 
 void MainWindow::draw()
 {
     m_background->draw();
+    m_tileLayer->draw();
     m_objectLayer->draw();
     m_HUD->draw();
 
