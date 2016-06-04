@@ -1,18 +1,18 @@
-#include "GameLayer/TileLayer.h"
+#include "GameLayer/MapLayer.h"
 #include "TileConstants.h"
 
-TileLayer::TileLayer(SDL_Renderer* renderer)
+MapLayer::MapLayer(SDL_Renderer* renderer)
 {
     m_Renderer = renderer;
     m_tileMap = new TileMap();
 }
 
-TileLayer::~TileLayer()
+MapLayer::~MapLayer()
 {
 
 }
 
-bool TileLayer::init()
+bool MapLayer::init()
 {
     bool success = true;
 
@@ -21,13 +21,13 @@ bool TileLayer::init()
     return success;
 }
 
-void TileLayer::update()
+void MapLayer::update()
 {
 
     //Handle business logic
 }
 
-void TileLayer::draw()
+void MapLayer::draw()
 {
     //nothing for now
 }

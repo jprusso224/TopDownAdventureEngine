@@ -2,9 +2,19 @@
 #define TILEMAP_H
 
 #include <stdint.h>
-#include "TinyXML/tinyxml2.h"
 #include <vector>
 #include <iostream>
+#include <list>
+
+#include "TinyXML/tinyxml2.h"
+
+#include "TileMap.h"
+#include "TileLayer.h"
+#include "TileSet.h"
+
+//TODO: Why do I have to forward declare this???
+class TileLayer;
+class TileSet;
 
 class TileMap
 {
@@ -22,6 +32,9 @@ class TileMap
 	uint16_t m_mapHeight;
 	uint8_t m_tileWidth;
 	uint8_t m_tileHeight;
+
+	std::list<TileSet*> m_tileSetList;
+	std::list<TileLayer*> m_tileLayerList;
 
 };
 

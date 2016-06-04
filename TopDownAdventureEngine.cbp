@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/FirstSDL_Project" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/TopDownAdventureEngine" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -15,10 +15,11 @@
 					<Add option="-g" />
 					<Add directory="include" />
 					<Add directory="include/GameEntity" />
+					<Add directory="include/TileMap" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/FirstSDL_Project" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/TopDownAdventureEngine" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -28,6 +29,7 @@
 					<Add directory="include" />
 					<Add directory="GameLayer" />
 					<Add directory="include/GameEntity" />
+					<Add directory="include/TileMap" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -50,18 +52,28 @@
 		<Unit filename="include/GameLayer/Background.h" />
 		<Unit filename="include/GameLayer/GameLayer.h" />
 		<Unit filename="include/GameLayer/HUD.h" />
+		<Unit filename="include/GameLayer/MapLayer.h" />
 		<Unit filename="include/GameLayer/ObjectLayer.h" />
 		<Unit filename="include/InputHandler.h" />
 		<Unit filename="include/MainWindow.h" />
+		<Unit filename="include/TileMap/Tile.h" />
+		<Unit filename="include/TileMap/TileLayer.h" />
+		<Unit filename="include/TileMap/TileMap.h" />
+		<Unit filename="include/TileMap/TileSet.h" />
 		<Unit filename="include/TinyXML/tinyxml2.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/GameEntity/GameEntity.cpp" />
 		<Unit filename="src/GameEntity/Player.cpp" />
 		<Unit filename="src/GameLayer/Background.cpp" />
 		<Unit filename="src/GameLayer/HUD.cpp" />
+		<Unit filename="src/GameLayer/MapLayer.cpp" />
 		<Unit filename="src/GameLayer/ObjectLayer.cpp" />
 		<Unit filename="src/InputHandler.cpp" />
 		<Unit filename="src/MainWindow.cpp" />
+		<Unit filename="src/TileMap/Tile.cpp" />
+		<Unit filename="src/TileMap/TileLayer.cpp" />
+		<Unit filename="src/TileMap/TileMap.cpp" />
+		<Unit filename="src/TileMap/TileSet.cpp" />
 		<Unit filename="src/TinyXML/tinyxml2.cpp" />
 		<Extensions>
 			<code_completion />

@@ -45,8 +45,8 @@ bool MainWindow::init()
                 success = false;
             }
 
-            m_tileLayer = new TileLayer(m_Renderer);
-            if(m_tileLayer->init() == false)
+            m_mapLayer = new MapLayer(m_Renderer);
+            if(m_mapLayer->init() == false)
             {
                 printf("Tile layer failed to init.\n");
                 success = false;
@@ -78,7 +78,7 @@ bool MainWindow::init()
 void MainWindow::update()
 {
     m_background->update();
-    m_tileLayer->update();
+    m_mapLayer->update();
     m_objectLayer->update();
     m_HUD->update();
 }
@@ -86,7 +86,7 @@ void MainWindow::update()
 void MainWindow::draw()
 {
     m_background->draw();
-    m_tileLayer->draw();
+    m_mapLayer->draw();
     m_objectLayer->draw();
     m_HUD->draw();
 
