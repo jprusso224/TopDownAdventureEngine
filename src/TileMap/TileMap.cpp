@@ -20,7 +20,6 @@ bool TileMap::loadTileSheet(const char* filename)
 	tinyxml2::XMLDocument doc;
 	tinyxml2::XMLElement* mapElement;
 
-
     if(doc.LoadFile(filename) == tinyxml2::XML_NO_ERROR)
     {
     	//load map
@@ -37,16 +36,18 @@ bool TileMap::loadTileSheet(const char* filename)
     		{
                 auto tileSet = new TileSet();
                 tileSet->Set_firstGid(tileSetElement->IntAttribute("firstgid"));
-                tileSet->Set_name(tileSetElement->Attribute("name"));
+                tileSet->Set_name(std::string(tileSetElement->Attribute("name")));
                 tileSet->Set_tileWidth(tileSetElement->IntAttribute("tilewidth"));
                 tileSet->Set_tileHeight(tileSetElement->IntAttribute("tileheight"));
+                tileSet->Set_numGids(tileSetElement->IntAttribute("tilecount"));
+                tileSet->Set_numCols(tileSetElement->IntAttribute("columns"));
 
                 tinyxml2::XMLElement* img = tileSetElement->FirstChildElement("image");
                 if(img != nullptr)
                 {
-                    tileSet->Set_imageName(tileSetElement->Attribute("source"));
-                    tileSet->Set_width(tileSetElement->IntAttribute("width"));
-                    tileSet->Set_height(tileSetElement->IntAttribute("height"));
+                    tileSet->Set_imageName(std::string(img->Attribute("source")));
+                    tileSet->Set_width(img->IntAttribute("width"));
+                    tileSet->Set_height(img->IntAttribute("height"));
                 }
                 else
                 {
@@ -69,10 +70,10 @@ bool TileMap::loadTileSheet(const char* filename)
                 if(data != nullptr)
                 {
                     tinyxml2::XMLElement* tile = data->FirstChildElement("tile");
-                    std::list<uint16_t> tileList;
+                    std::vector<uint16_t> tileList;
                     while(tile != nullptr)
                     {
-                        tileList.push_back(tileLayerElement->IntAttribute("gid"));
+                        tileList.push_back(tile->IntAttribute("gid"));
                         tile = tile->NextSiblingElement("tile");
                     }
                     tileLayer->Set_data(tileList);
@@ -99,4 +100,17 @@ bool TileMap::loadTileSheet(const char* filename)
 
 	return success;
 
+}
+
+bool TileMap::loadTileSets()
+{
+    bool success = true;
+
+    //iterate through tileset list and return false if ANY fail.
+    for(TileSet* tileSet : m_tileSetList)
+    {
+        success = tileSet->loadImage();
+    }
+
+    return success;
 }

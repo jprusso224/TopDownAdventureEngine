@@ -23,6 +23,13 @@ class TileMap
         virtual ~TileMap();
 
         bool loadTileSheet(const char* filename);
+        bool loadTileSets();
+
+        /**determine positions, etc*/
+        void update();
+
+        /**Get the images and rendercopy*/
+        void draw();
 
     protected:
 

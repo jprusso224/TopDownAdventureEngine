@@ -9,14 +9,19 @@ MapLayer::MapLayer(SDL_Renderer* renderer)
 
 MapLayer::~MapLayer()
 {
-
+    delete m_tileMap;
 }
 
 bool MapLayer::init()
 {
-    bool success = true;
+    bool success = false;
 
-    success = m_tileMap->loadTileSheet(TileSheet::TILESHEET_NAME);
+    std::string fullpath = TileSheet::TILESHEET_PATH + TileSheet::TILESHEET_NAME;
+
+    if(m_tileMap->loadTileSheet(fullpath.c_str()) == true)
+    {
+        success = m_tileMap->loadTileSets();
+    }
 
     return success;
 }
