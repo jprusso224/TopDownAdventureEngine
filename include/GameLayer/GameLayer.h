@@ -10,7 +10,7 @@ class GameLayer
     public:
 
         GameLayer(){};
-        ~GameLayer(){};
+        virtual ~GameLayer(){};
 
         virtual bool init() = 0;
         virtual void update() = 0;

@@ -8,7 +8,7 @@ InputHandler::InputHandler() : m_controller(nullptr)
 
 InputHandler::~InputHandler()
 {
-    //dtor
+
 }
 
 bool InputHandler::init()
@@ -51,7 +51,7 @@ ProcessEventType InputHandler::processEvent()
     {
   //  case SDL_QUIT:
     //    results = ProcessEventType::CLOSE_EVENT;
-   //     break;
+      //  break;
 
         // check for keypresses
     case SDL_KEYDOWN:

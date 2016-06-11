@@ -4,7 +4,7 @@
 MapLayer::MapLayer(SDL_Renderer* renderer)
 {
     m_Renderer = renderer;
-    m_tileMap = new TileMap();
+    m_tileMap = new TileMap(m_Renderer);
 }
 
 MapLayer::~MapLayer()
@@ -34,5 +34,5 @@ void MapLayer::update()
 
 void MapLayer::draw()
 {
-    //nothing for now
+    m_tileMap->draw();
 }

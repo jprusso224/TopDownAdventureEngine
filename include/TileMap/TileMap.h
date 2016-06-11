@@ -19,7 +19,7 @@ class TileSet;
 class TileMap
 {
     public:
-        TileMap();
+        TileMap(SDL_Renderer* renderer);
         virtual ~TileMap();
 
         bool loadTileSheet(const char* filename);
@@ -40,8 +40,10 @@ class TileMap
 	uint8_t m_tileWidth;
 	uint8_t m_tileHeight;
 
-	std::list<TileSet*> m_tileSetList;
-	std::list<TileLayer*> m_tileLayerList;
+	std::vector<TileSet*> m_tileSetList;
+	std::vector<TileLayer*> m_tileLayerList;
+
+	SDL_Renderer* m_Renderer;
 
 };
 

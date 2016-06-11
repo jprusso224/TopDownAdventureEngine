@@ -11,6 +11,10 @@ MainWindow::MainWindow()
 MainWindow::~MainWindow()
 {
     delete m_background;
+    delete m_mapLayer;
+    delete m_objectLayer;
+    delete m_HUD;
+
 }
 
 bool MainWindow::init()
@@ -97,9 +101,9 @@ void MainWindow::close()
 {
 
     SDL_DestroyRenderer(m_Renderer);
-    m_Renderer = nullptr;
+
     //Destroy window
     SDL_DestroyWindow( gWindow );
-    gWindow = nullptr;
+
 
 }

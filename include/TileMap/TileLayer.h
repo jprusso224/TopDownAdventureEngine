@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#include "Tile.h"
+
 class TileLayer
 {
     public:
@@ -20,6 +22,10 @@ class TileLayer
         void Set_name(std::string val) { m_name = val; }
         std::vector<uint16_t> Get_data() { return m_data; }
         void Set_data(std::vector<uint16_t> val) { m_data = val; }
+        std::vector<Tile*> Get_tiles() { return m_tileVector; }
+        void Set_tiles(std::vector<Tile*> val) { m_tileVector = val; }
+
+        bool setupLayer();
 
     protected:
 
@@ -28,6 +34,10 @@ class TileLayer
         uint16_t m_height;
         std::string m_name;
         std::vector<uint16_t> m_data;
+        std::vector<Tile*> m_tileVector;
+
+
+
 };
 
 #endif // TILELAYER_H

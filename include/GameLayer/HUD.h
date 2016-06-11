@@ -7,7 +7,7 @@ class HUD : public GameLayer
 {
     public:
         HUD(SDL_Renderer* renderer);
-        ~HUD();
+        virtual ~HUD();
 
         bool init() override;
         void update() override;

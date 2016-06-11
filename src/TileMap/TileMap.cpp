@@ -2,14 +2,15 @@
 #include "TileMap/Tile.h"
 
 
-TileMap::TileMap()
+TileMap::TileMap(SDL_Renderer* renderer)
 {
-    //ctor
+    m_Renderer = renderer;
 }
 
 TileMap::~TileMap()
 {
-    //dtor
+    m_tileLayerList.clear();
+    m_tileSetList.clear();
 }
 
 bool TileMap::loadTileSheet(const char* filename)
@@ -34,7 +35,7 @@ bool TileMap::loadTileSheet(const char* filename)
     		tinyxml2::XMLElement* tileSetElement = mapElement->FirstChildElement("tileset");
     		while(tileSetElement != nullptr)
     		{
-                auto tileSet = new TileSet();
+                auto tileSet = new TileSet(m_Renderer);
                 tileSet->Set_firstGid(tileSetElement->IntAttribute("firstgid"));
                 tileSet->Set_name(std::string(tileSetElement->Attribute("name")));
                 tileSet->Set_tileWidth(tileSetElement->IntAttribute("tilewidth"));
@@ -109,8 +110,71 @@ bool TileMap::loadTileSets()
     //iterate through tileset list and return false if ANY fail.
     for(TileSet* tileSet : m_tileSetList)
     {
-        success = tileSet->loadImage();
+        success &= tileSet->loadImage();
+    }
+
+    for(auto layer : m_tileLayerList )
+    {
+        success &= layer->setupLayer();
     }
 
     return success;
+}
+
+/**determine positions, etc*/
+void TileMap::update()
+{
+
+}
+
+/**Get the images and rendercopy*/
+void TileMap::draw()
+{
+
+   for(TileLayer* layer : m_tileLayerList)
+    {
+        std::vector<Tile*> tiles = layer->Get_tiles();
+        unsigned int numTiles = layer->Get_width() * layer->Get_height();
+
+        int tileWidth = 0;
+        int tileHeight = 0;
+
+        for (unsigned int i = 0; i < numTiles; i++)
+        {
+
+            int gid = tiles[i]->Get_gid();
+            SDL_Texture* tile = nullptr;
+
+
+            for( TileSet* tileSet : m_tileSetList)
+            {
+                tile = tileSet->getTileFromGid(gid);
+                if(tile != nullptr)
+                {
+                    tileHeight = tileSet->Get_tileHeight();
+                    tileWidth = tileSet->Get_tileWidth();
+                    break;
+                }
+            }
+
+            if(tile != nullptr)
+            {
+
+                int x = tiles[i]->Get_x();
+                int y = tiles[i]->Get_y();
+
+                SDL_Rect tileRect = {0,0,tileWidth,tileHeight};
+                SDL_Rect windowRect = {x*tileWidth,y*tileHeight,tileWidth,tileHeight};
+
+                SDL_RenderCopy(m_Renderer,tile,&tileRect,&windowRect);
+
+            }
+
+        }
+
+        tiles.clear();
+
+    }
+
+
 }

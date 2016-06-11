@@ -39,7 +39,7 @@ void Player::update()
         numDirectionInput++;
         if(numDirectionInput <= maxDirectionInput)
         {
-            m_dy=-1;
+            m_dy=-3;
             m_direction = WindowDirection::UP;
         }
     }
@@ -48,7 +48,7 @@ void Player::update()
         numDirectionInput++;
         if(numDirectionInput <= maxDirectionInput)
         {
-            m_dy=1;
+            m_dy=3;
             m_direction = WindowDirection::DOWN;
         }
     }
@@ -57,7 +57,7 @@ void Player::update()
         numDirectionInput++;
         if(numDirectionInput <= maxDirectionInput)
         {
-            m_dx=1;
+            m_dx=3;
             m_direction = WindowDirection::RIGHT;
         }
     }
@@ -66,7 +66,7 @@ void Player::update()
         numDirectionInput++;
         if(numDirectionInput <= maxDirectionInput)
         {
-            m_dx=-1;
+            m_dx=-3;
             m_direction = WindowDirection::LEFT;
         }
     }
@@ -148,6 +148,6 @@ void Player::draw()
 
     if(draw)
     {
-        filledTrigonRGBA(m_Renderer,x1,y1, x2, y2, x3, y3,0,100,0,254);
+        filledTrigonRGBA(m_Renderer,x1,y1, x2, y2, x3, y3,250,0,0,254);
     }
 }

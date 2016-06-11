@@ -56,6 +56,7 @@
 		<Unit filename="include/GameLayer/ObjectLayer.h" />
 		<Unit filename="include/InputHandler.h" />
 		<Unit filename="include/MainWindow.h" />
+		<Unit filename="include/TileConstants.h" />
 		<Unit filename="include/TileMap/Tile.h" />
 		<Unit filename="include/TileMap/TileLayer.h" />
 		<Unit filename="include/TileMap/TileMap.h" />

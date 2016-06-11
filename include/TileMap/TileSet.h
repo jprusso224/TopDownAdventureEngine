@@ -9,7 +9,7 @@
 class TileSet
 {
     public:
-        TileSet();
+        TileSet(SDL_Renderer* renderer);
         virtual ~TileSet();
 
         /** Getters & Setters */
@@ -36,11 +36,12 @@ class TileSet
         bool loadImage();
 
         bool loadImageToSubmap(SDL_Surface* tileSetSurface);
-        SDL_Surface* getTileFromGid(unsigned int gid);
+        SDL_Texture* getTileFromGid(unsigned int gid);
 
     protected:
 
     private:
+        SDL_Renderer* m_Renderer;
         unsigned int m_firstGid;
         unsigned int m_numGids;
         unsigned int m_numCols;
@@ -51,7 +52,7 @@ class TileSet
         uint16_t m_height;
         std::string m_imageName;
 
-        std::map<int,SDL_Surface*> m_tileSetImageMap;
+        std::map<int,SDL_Texture*> m_tileSetImageMap;
 };
 
 #endif // TILESET_H

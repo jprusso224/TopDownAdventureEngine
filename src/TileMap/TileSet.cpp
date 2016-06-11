@@ -3,8 +3,9 @@
 
 #include "SDL2/SDL_image.h"
 
-TileSet::TileSet()
+TileSet::TileSet(SDL_Renderer* renderer)
 {
+    m_Renderer = renderer;
     m_firstGid = 0;
     m_numGids = 0;
     m_name = std::string();
@@ -17,10 +18,10 @@ TileSet::TileSet()
 
 TileSet::~TileSet()
 {
-    //clean up map... need to free surfaces then empty
+    //clean up map... need to destroy textures
     for(unsigned int i = 0;i < m_tileSetImageMap.size();i++)
     {
-        SDL_FreeSurface(m_tileSetImageMap[i]);
+        SDL_DestroyTexture(m_tileSetImageMap[i]);
     }
 }
 
@@ -32,7 +33,7 @@ bool TileSet::loadImage()
 
     printf("Loading tileset: %s\n",fullpath.c_str());
 
-    SDL_Surface* tileSetSurface = IMG_Load(fullpath.c_str());
+    SDL_Surface* tileSetSurface = IMG_Load("config/TileSheets/space.png");
 
     if(tileSetSurface == nullptr)
     {
@@ -52,32 +53,29 @@ bool TileSet::loadImage()
 bool TileSet::loadImageToSubmap(SDL_Surface* tileSetSurface)
 {
     bool success = true;
-    SDL_Rect srcRect;
-    SDL_Rect destRect;
-
-    srcRect.w = m_tileWidth;
-    srcRect.h = m_tileHeight;
-    srcRect.y = 0;
-
-    destRect.w = m_tileWidth;
-    destRect.h = m_tileHeight;
-    destRect.x = 0;
-    destRect.y = 0;
+    SDL_Rect srcRect = {0,0,m_tileWidth,m_tileHeight};
+    SDL_Rect destRect = {0,0,m_tileWidth,m_tileHeight};
 
     unsigned int column = 0;
 
-    for(unsigned int i = 0; i <= m_numGids; i++)
+    SDL_Surface *tile = new SDL_Surface();
+
+    for(unsigned int i = 0; i < m_numGids; i++)
     {
         srcRect.x += column*m_tileWidth;
 
-        //copy image
-        SDL_Surface* subSurface = new SDL_Surface;
-        SDL_BlitSurface(tileSetSurface,&srcRect,subSurface,&destRect);
+        tile = SDL_ConvertSurface(tileSetSurface,tileSetSurface->format,0);
 
-        m_tileSetImageMap[i] = subSurface;
+        SDL_BlitSurface(tileSetSurface,&srcRect,tile,&destRect);
+
+        printf("Blitting surface: x,y to x2,y2: %d,%d to %d,%d\n",srcRect.x,srcRect.y,destRect.x,destRect.y);
+
+        SDL_Texture* texture = SDL_CreateTextureFromSurface(m_Renderer,tile);
+
+        m_tileSetImageMap[i+1] = texture;
 
         column++;
-        if(column < m_numCols)
+        if(column >= m_numCols)
         {
             column = 0;
             srcRect.y+=m_tileHeight;
@@ -85,12 +83,14 @@ bool TileSet::loadImageToSubmap(SDL_Surface* tileSetSurface)
         }
     }
 
+    SDL_FreeSurface(tile);
+
     return success;
 }
 
-SDL_Surface* TileSet::getTileFromGid(unsigned int gid)
+SDL_Texture* TileSet::getTileFromGid(unsigned int gid)
 {
-    SDL_Surface* tile = NULL;
+    SDL_Texture* tile = NULL;
 
     if(gid > 0 && gid <= m_numGids)
     {

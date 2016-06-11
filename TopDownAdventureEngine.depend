@@ -101,11 +101,12 @@
 	"GameConstants.h"
 	<SDL2/SDL.h>
 
-1464658252 source:/home/john/Development/TopDownAdventureEngine/main.cpp
+1465665620 source:/home/john/Development/TopDownAdventureEngine/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
+	<unistd.h>
 	"MainWindow.h"
 	"InputHandler.h"
 
@@ -124,10 +125,10 @@
 
 1463876573 /home/john/Development/TopDownAdventureEngine/include/xbox_controller.h
 
-1464660326 /home/john/Development/TopDownAdventureEngine/include/GameLayer/HUD.h
+1465662686 /home/john/Development/TopDownAdventureEngine/include/GameLayer/HUD.h
 	"GameLayer.h"
 
-1464736403 /home/john/Development/TopDownAdventureEngine/include/GameLayer/GameLayer.h
+1465662674 /home/john/Development/TopDownAdventureEngine/include/GameLayer/GameLayer.h
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 
@@ -152,14 +153,14 @@
 1464739430 source:/home/john/Development/TopDownAdventureEngine/src/GameEntity/GameEntity.cpp
 	"GameEntity.h"
 
-1464746619 source:/home/john/Development/TopDownAdventureEngine/src/GameEntity/Player.cpp
+1465665791 source:/home/john/Development/TopDownAdventureEngine/src/GameEntity/Player.cpp
 	"Player.h"
 
 1464661945 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/Background.cpp
 	"GameLayer/Background.h"
 	"GameConstants.h"
 
-1464746641 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/HUD.cpp
+1465267191 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/HUD.cpp
 	"GameLayer/HUD.h"
 	"GameConstants.h"
 
@@ -167,10 +168,10 @@
 	"GameLayer/ObjectLayer.h"
 	"GameConstants.h"
 
-1464746174 source:/home/john/Development/TopDownAdventureEngine/src/InputHandler.cpp
+1465665419 source:/home/john/Development/TopDownAdventureEngine/src/InputHandler.cpp
 	"InputHandler.h"
 
-1465043219 source:/home/john/Development/TopDownAdventureEngine/src/MainWindow.cpp
+1465663834 source:/home/john/Development/TopDownAdventureEngine/src/MainWindow.cpp
 	<stdlib.h>
 	<stdio.h>
 	"MainWindow.h"
@@ -178,7 +179,7 @@
 1464918490 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/Tile.cpp
 	"TileMap/Tile.h"
 
-1464834264 /home/john/Development/TopDownAdventureEngine/include/TileMap/Tile.h
+1465263474 /home/john/Development/TopDownAdventureEngine/include/TileMap/Tile.h
 
 1464826892 source:/home/john/Development/TopDownAdventureEngine/src/TinyXML/tinyxml2.cpp
 	<TinyXML/tinyxml2.h>
@@ -210,11 +211,11 @@
 	<GameLayer/GameLayer.h>
 	"TileMap/TileMap.h"
 
-1465166181 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileMap.cpp
+1465666230 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileMap.cpp
 	"TileMap/TileMap.h"
 	"TileMap/Tile.h"
 
-1465162717 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileMap.h
+1465665975 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileMap.h
 	<stdint.h>
 	<vector>
 	<iostream>
@@ -224,32 +225,33 @@
 	"TileLayer.h"
 	"TileSet.h"
 
-1465159632 /home/john/Development/TopDownAdventureEngine/include/TileConstants.h
+1465646789 /home/john/Development/TopDownAdventureEngine/include/TileConstants.h
 	<string>
 
 1465042889 /home/john/Development/TopDownAdventureEngine/include/GameLayer/MapLayer.h
 	<GameLayer/GameLayer.h>
 	"TileMap/TileMap.h"
 
-1465166458 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/MapLayer.cpp
+1465662106 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/MapLayer.cpp
 	"GameLayer/MapLayer.h"
 	"TileConstants.h"
 
-1465166407 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileSet.cpp
+1465666298 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileSet.cpp
 	"TileSet.h"
 	"TileConstants.h"
 	"SDL2/SDL_image.h"
 
-1465166416 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileSet.h
+1465665341 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileSet.h
 	"SDL2/SDL.h"
 	<string>
 	<map>
 
-1465044542 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileLayer.cpp
+1465265990 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileLayer.cpp
 	"TileLayer.h"
 
-1465160483 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileLayer.h
+1465264459 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileLayer.h
 	<stdint.h>
 	<string>
 	<vector>
+	"Tile.h"
 
