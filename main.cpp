@@ -6,6 +6,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 #include <unistd.h>
 #include "MainWindow.h"
 #include "InputHandler.h"
@@ -15,6 +16,8 @@ int main ( int argc, char** argv )
 
     InputHandler* inputHandler = new InputHandler();
     MainWindow* mainWindow = new MainWindow();
+
+    Mix_Music *music = nullptr;
     //Start up SDL and create window
 
     if( SDL_Init( SDL_INIT_EVERYTHING) < 0 )
@@ -42,6 +45,20 @@ int main ( int argc, char** argv )
         {
             printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
         }
+
+        //Initialize SDL_mixer
+        if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
+        {
+            printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+        }
+                //Load music
+        music = Mix_LoadMUS( "config/Sounds/Db_Phrigian.wav" );
+        if( music == NULL )
+        {
+            printf( "Failed to load beat music! SDL_mixer Error: %s\n", Mix_GetError() );
+        }
+
+        Mix_PlayMusic(music,-1);
 
         /********* THIS IS THE MAIN GAME LOOP ********************/
         printf("Entering main loop! Good luck! \n");

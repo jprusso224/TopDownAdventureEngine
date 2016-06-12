@@ -101,11 +101,12 @@
 	"GameConstants.h"
 	<SDL2/SDL.h>
 
-1465665620 source:/home/john/Development/TopDownAdventureEngine/main.cpp
+1465763274 source:/home/john/Development/TopDownAdventureEngine/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
+	<SDL2/SDL_mixer.h>
 	<unistd.h>
 	"MainWindow.h"
 	"InputHandler.h"
