@@ -31,6 +31,11 @@ class TileMap
         /**Get the images and rendercopy*/
         void draw();
 
+        void scrollUp(){m_Ymap-=2;}
+        void scrollDown(){m_Ymap+=2;}
+        void scrollRight(){m_Xmap+=2;}
+        void scrollLeft(){m_Xmap-=2;}
+
     protected:
 
     private:
@@ -39,6 +44,9 @@ class TileMap
 	uint16_t m_mapHeight;
 	uint8_t m_tileWidth;
 	uint8_t m_tileHeight;
+
+	int m_Xmap;
+	int m_Ymap;
 
 	std::vector<TileSet*> m_tileSetList;
 	std::vector<TileLayer*> m_tileLayerList;

@@ -110,13 +110,14 @@
 	"MainWindow.h"
 	"InputHandler.h"
 
-1465043275 /home/john/Development/TopDownAdventureEngine/include/MainWindow.h
+1465753419 /home/john/Development/TopDownAdventureEngine/include/MainWindow.h
 	<SDL2/SDL.h>
 	"InputHandler.h"
 	"GameLayer/HUD.h"
 	"GameLayer/Background.h"
 	"GameLayer/ObjectLayer.h"
 	"GameLayer/MapLayer.h"
+	"Player.h"
 	"GameConstants.h"
 
 1463876470 /home/john/Development/TopDownAdventureEngine/include/InputHandler.h
@@ -132,14 +133,14 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 
-1464635896 /home/john/Development/TopDownAdventureEngine/include/GameLayer/Background.h
+1465762247 /home/john/Development/TopDownAdventureEngine/include/GameLayer/Background.h
 	<GameLayer/GameLayer.h>
 
 1464744190 /home/john/Development/TopDownAdventureEngine/include/GameLayer/ObjectLayer.h
 	<GameLayer/GameLayer.h>
 	<Player.h>
 
-1464744112 /home/john/Development/TopDownAdventureEngine/include/GameEntity/Player.h
+1465752457 /home/john/Development/TopDownAdventureEngine/include/GameEntity/Player.h
 	"GameEntity.h"
 	"GameConstants.h"
 	<SDL2/SDL.h>
@@ -153,25 +154,26 @@
 1464739430 source:/home/john/Development/TopDownAdventureEngine/src/GameEntity/GameEntity.cpp
 	"GameEntity.h"
 
-1465665791 source:/home/john/Development/TopDownAdventureEngine/src/GameEntity/Player.cpp
+1465753431 source:/home/john/Development/TopDownAdventureEngine/src/GameEntity/Player.cpp
 	"Player.h"
 
-1464661945 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/Background.cpp
+1465762399 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/Background.cpp
 	"GameLayer/Background.h"
 	"GameConstants.h"
+	"SDL2/SDL_image.h"
 
 1465267191 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/HUD.cpp
 	"GameLayer/HUD.h"
 	"GameConstants.h"
 
-1464744316 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/ObjectLayer.cpp
+1465753928 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/ObjectLayer.cpp
 	"GameLayer/ObjectLayer.h"
 	"GameConstants.h"
 
 1465665419 source:/home/john/Development/TopDownAdventureEngine/src/InputHandler.cpp
 	"InputHandler.h"
 
-1465663834 source:/home/john/Development/TopDownAdventureEngine/src/MainWindow.cpp
+1465760789 source:/home/john/Development/TopDownAdventureEngine/src/MainWindow.cpp
 	<stdlib.h>
 	<stdio.h>
 	"MainWindow.h"
@@ -211,11 +213,11 @@
 	<GameLayer/GameLayer.h>
 	"TileMap/TileMap.h"
 
-1465666230 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileMap.cpp
+1465762697 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileMap.cpp
 	"TileMap/TileMap.h"
 	"TileMap/Tile.h"
 
-1465665975 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileMap.h
+1465762715 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileMap.h
 	<stdint.h>
 	<vector>
 	<iostream>
@@ -228,11 +230,11 @@
 1465646789 /home/john/Development/TopDownAdventureEngine/include/TileConstants.h
 	<string>
 
-1465042889 /home/john/Development/TopDownAdventureEngine/include/GameLayer/MapLayer.h
+1465754546 /home/john/Development/TopDownAdventureEngine/include/GameLayer/MapLayer.h
 	<GameLayer/GameLayer.h>
 	"TileMap/TileMap.h"
 
-1465662106 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/MapLayer.cpp
+1465761973 source:/home/john/Development/TopDownAdventureEngine/src/GameLayer/MapLayer.cpp
 	"GameLayer/MapLayer.h"
 	"TileConstants.h"
 
@@ -246,10 +248,11 @@
 	<string>
 	<map>
 
-1465265990 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileLayer.cpp
+1465761863 source:/home/john/Development/TopDownAdventureEngine/src/TileMap/TileLayer.cpp
 	"TileLayer.h"
+	"GameConstants.h"
 
-1465264459 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileLayer.h
+1465761477 /home/john/Development/TopDownAdventureEngine/include/TileMap/TileLayer.h
 	<stdint.h>
 	<string>
 	<vector>

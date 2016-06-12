@@ -5,6 +5,8 @@
 TileMap::TileMap(SDL_Renderer* renderer)
 {
     m_Renderer = renderer;
+    m_Xmap = 0;
+    m_Ymap = 0;
 }
 
 TileMap::~TileMap()
@@ -163,8 +165,11 @@ void TileMap::draw()
                 int x = tiles[i]->Get_x();
                 int y = tiles[i]->Get_y();
 
+                int offsetX = x*tileWidth-m_Xmap;
+                int offsetY = y*tileHeight-m_Ymap;
+
                 SDL_Rect tileRect = {0,0,tileWidth,tileHeight};
-                SDL_Rect windowRect = {x*tileWidth,y*tileHeight,tileWidth,tileHeight};
+                SDL_Rect windowRect = {offsetX,offsetY,tileWidth,tileHeight};
 
                 SDL_RenderCopy(m_Renderer,tile,&tileRect,&windowRect);
 
@@ -175,6 +180,5 @@ void TileMap::draw()
         tiles.clear();
 
     }
-
 
 }

@@ -8,6 +8,7 @@
 #include "GameLayer/Background.h"
 #include "GameLayer/ObjectLayer.h"
 #include "GameLayer/MapLayer.h"
+#include "Player.h"
 #include "GameConstants.h"
 
 class MainWindow
@@ -17,6 +18,8 @@ class MainWindow
         virtual ~MainWindow();
 
         bool init();
+
+        void processInput();
 
         void update();
 
@@ -35,7 +38,9 @@ class MainWindow
         HUD* m_HUD;
         Background* m_background;
         MapLayer* m_mapLayer;
+        Player* m_Player;
         ObjectLayer* m_objectLayer;
+
 };
 
 #endif // MAINMEDIAHANDLER_H

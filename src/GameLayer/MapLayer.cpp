@@ -26,6 +26,28 @@ bool MapLayer::init()
     return success;
 }
 
+void MapLayer::processActionSignal(MapActionSignal sig)
+{
+    switch(sig)
+    {
+        case MapActionSignal::SCROLL_UP:
+            m_tileMap->scrollUp();
+        break;
+        case MapActionSignal::SCROLL_DOWN:
+            m_tileMap->scrollDown();
+        break;
+        case MapActionSignal::SCROLL_RIGHT:
+            m_tileMap->scrollRight();
+        break;
+        case MapActionSignal::SCROLL_LEFT:
+            m_tileMap->scrollLeft();
+        break;
+        case MapActionSignal::NO_SCROLL:
+        default:
+            break;
+    }
+}
+
 void MapLayer::update()
 {
 

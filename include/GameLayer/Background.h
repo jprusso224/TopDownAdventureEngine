@@ -17,6 +17,9 @@ class Background : public GameLayer
     protected:
 
     private:
+
+        SDL_Texture* m_bg;
+        float m_scroller;
 };
 
 #endif // BACKGROUND_H

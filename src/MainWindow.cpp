@@ -13,8 +13,8 @@ MainWindow::~MainWindow()
     delete m_background;
     delete m_mapLayer;
     delete m_objectLayer;
+    delete m_Player;
     delete m_HUD;
-
 }
 
 bool MainWindow::init()
@@ -23,7 +23,7 @@ bool MainWindow::init()
     bool success = true;
 
     //Create window
-    gWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+    gWindow = SDL_CreateWindow( "Game Demo", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
     if( gWindow == NULL )
     {
         printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
@@ -63,14 +63,19 @@ bool MainWindow::init()
                 success = false;
             }
 
+            m_Player = new Player(m_Renderer,SCREEN_WIDTH/2,SCREEN_HEIGHT/2);
+            if(m_Player->init() == false)
+            {
+                printf("Player failed to init");
+                success = false;
+            }
+
             m_HUD = new HUD(m_Renderer);
             if(m_HUD->init() == false)
             {
                 printf("HUD failed to init.\n");
                 success = false;
             }
-
-
 
         }
 
@@ -79,11 +84,64 @@ bool MainWindow::init()
     return success;
 }
 
+void MainWindow::processInput()
+{
+    //look at controller state and set direction....
+    int maxDirectionInput = 2;
+    int numDirectionInput = 0;
+
+    int numKeys;
+   // SDL_GetKey
+    SDL_PumpEvents();
+    const Uint8* keyState = SDL_GetKeyboardState(&numKeys);
+
+     /** Key Checking **/
+    if(keyState[SDL_SCANCODE_W])
+    {
+        numDirectionInput++;
+        if(numDirectionInput <= maxDirectionInput)
+        {
+            m_Player->ProcessActionSignal(PlayerActionSignal::PLAYER_MOVE_UP);
+            m_mapLayer->processActionSignal(MapActionSignal::SCROLL_UP);
+        }
+    }
+    if(keyState[SDL_SCANCODE_S])
+    {
+        numDirectionInput++;
+        if(numDirectionInput <= maxDirectionInput)
+        {
+            m_Player->ProcessActionSignal(PlayerActionSignal::PLAYER_MOVE_DOWN);
+            m_mapLayer->processActionSignal(MapActionSignal::SCROLL_DOWN);
+        }
+    }
+    if(keyState[SDL_SCANCODE_D])
+    {
+        numDirectionInput++;
+        if(numDirectionInput <= maxDirectionInput)
+        {
+            m_Player->ProcessActionSignal(PlayerActionSignal::PLAYER_MOVE_RIGHT);
+            m_mapLayer->processActionSignal(MapActionSignal::SCROLL_RIGHT);
+        }
+    }
+    if(keyState[SDL_SCANCODE_A])
+    {
+        numDirectionInput++;
+        if(numDirectionInput <= maxDirectionInput)
+        {
+            m_Player->ProcessActionSignal(PlayerActionSignal::PLAYER_MOVE_LEFT);
+            m_mapLayer->processActionSignal(MapActionSignal::SCROLL_LEFT);
+        }
+    }
+}
+
 void MainWindow::update()
 {
+
+    processInput();
     m_background->update();
     m_mapLayer->update();
     m_objectLayer->update();
+    m_Player->update();
     m_HUD->update();
 }
 
@@ -92,6 +150,7 @@ void MainWindow::draw()
     m_background->draw();
     m_mapLayer->draw();
     m_objectLayer->draw();
+    m_Player->draw();
     m_HUD->draw();
 
     SDL_RenderPresent( m_Renderer );

@@ -1,4 +1,5 @@
 #include "TileLayer.h"
+#include "GameConstants.h"
 
 TileLayer::TileLayer()
 {
@@ -38,4 +39,15 @@ bool TileLayer::setupLayer()
     }
 
     return true;
+}
+
+std::vector<Tile*> TileLayer::getTilesInView(int x, int y)
+{
+    //return the subset of tiles in viewport (on screen)
+    std::vector<Tile*> inView;
+
+
+
+    return inView;
+
 }

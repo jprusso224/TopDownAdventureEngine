@@ -5,6 +5,19 @@
 #include "GameConstants.h"
 #include <SDL2/SDL.h>
 
+enum class PlayerActionSignal
+{
+    PLAYER_IDLE = 0,
+    PLAYER_MOVE_UP,
+    PLAYER_MOVE_DOWN,
+    PLAYER_MOVE_RIGHT,
+    PLAYER_MOVE_LEFT,
+    PLAYER_ROLL,
+    PLAYER_JUMP,
+    PLAYER_FIRE_WEAPON,
+    PLAYER_MELEE,
+};
+
 class Player : public GameEntity
 {
     public:
@@ -14,6 +27,8 @@ class Player : public GameEntity
         virtual bool init() override;
         virtual void update() override;
         virtual void draw() override;
+
+        void ProcessActionSignal(PlayerActionSignal sig);
 
         WindowDirection getDirection();
         void setDirection(WindowDirection direction);

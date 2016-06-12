@@ -21,59 +21,42 @@ bool Player::init()
     return true;
 }
 
+void Player::ProcessActionSignal(PlayerActionSignal sig)
+{
+    switch(sig)
+    {
+        case PlayerActionSignal::PLAYER_IDLE:
+        break;
+        case PlayerActionSignal::PLAYER_MOVE_UP:
+            m_direction = WindowDirection::UP;
+        break;
+        case PlayerActionSignal::PLAYER_MOVE_DOWN:
+            m_direction = WindowDirection::DOWN;
+        break;
+        case PlayerActionSignal::PLAYER_MOVE_RIGHT:
+            m_direction = WindowDirection::RIGHT;
+        break;
+        case PlayerActionSignal::PLAYER_MOVE_LEFT:
+            m_direction = WindowDirection::LEFT;
+        break;
+        //UNIMPLEMENTED:
+        case PlayerActionSignal::PLAYER_JUMP:
+        case PlayerActionSignal::PLAYER_MELEE:
+        case PlayerActionSignal::PLAYER_FIRE_WEAPON:
+        case PlayerActionSignal::PLAYER_ROLL:
+        default:
+            break;
+    }
+}
+
+
 void Player::update()
 {
-    //look at controller state and set direction....
-    int maxDirectionInput = 2;
-    int numDirectionInput = 0;
 
-    int numKeys;
-   // SDL_GetKey
-    SDL_PumpEvents();
-    const Uint8* keyState = SDL_GetKeyboardState(&numKeys);
-
-     /** Key Checking, Update Velocity **/
-    if(keyState[SDL_SCANCODE_W])
-    {
-
-        numDirectionInput++;
-        if(numDirectionInput <= maxDirectionInput)
-        {
-            m_dy=-3;
-            m_direction = WindowDirection::UP;
-        }
-    }
-    if(keyState[SDL_SCANCODE_S])
-    {
-        numDirectionInput++;
-        if(numDirectionInput <= maxDirectionInput)
-        {
-            m_dy=3;
-            m_direction = WindowDirection::DOWN;
-        }
-    }
-    if(keyState[SDL_SCANCODE_D])
-    {
-        numDirectionInput++;
-        if(numDirectionInput <= maxDirectionInput)
-        {
-            m_dx=3;
-            m_direction = WindowDirection::RIGHT;
-        }
-    }
-    if(keyState[SDL_SCANCODE_A])
-    {
-        numDirectionInput++;
-        if(numDirectionInput <= maxDirectionInput)
-        {
-            m_dx=-3;
-            m_direction = WindowDirection::LEFT;
-        }
-    }
 
     /** Update Position **/
-    m_x+=m_dx;
-    m_y+=m_dy;
+//    m_x+=m_dx;
+ //   m_y+=m_dy;
 
     m_dy = 0;
     m_dx = 0;

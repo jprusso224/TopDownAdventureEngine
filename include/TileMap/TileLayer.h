@@ -26,6 +26,7 @@ class TileLayer
         void Set_tiles(std::vector<Tile*> val) { m_tileVector = val; }
 
         bool setupLayer();
+        std::vector<Tile*> getTilesInView(int x, int y);
 
     protected:
 
@@ -35,8 +36,6 @@ class TileLayer
         std::string m_name;
         std::vector<uint16_t> m_data;
         std::vector<Tile*> m_tileVector;
-
-
 
 };
 
